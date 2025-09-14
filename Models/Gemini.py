@@ -33,13 +33,18 @@ class Gemini (IModel):
             "contents": [
                 {
                     "parts": [
-                        {
-                            "text": prompt
-                        }
+                        {"text": prompt}
                     ]
                 }
             ]
         }
+
+        if self.first_prompt is not None:
+            data["system_instruction"] = {
+                "parts": [
+                    {"text": self.first_prompt}
+                ]
+            }
 
         try:
             response = requests.post(url, headers=headers, json=data)
