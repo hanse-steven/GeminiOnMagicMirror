@@ -59,8 +59,13 @@ def play_response(text):
         audio = AudioSegment.from_file(sound_file, format="mp3")
         sped_up_audio = audio.speedup(playback_speed=1.1)
         play(sped_up_audio)
+    except PermissionError as e:
+        print(f"Erreur permissions audio: {e}")
+        # Fallback silencieux - on affiche juste le texte
+        print(f"🔊 Audio (silencieux): {text}")
     except Exception as e:
         print(f"Erreur audio: {e}")
+        print(f"🔊 Audio (silencieux): {text}")
 
 
 def main():
