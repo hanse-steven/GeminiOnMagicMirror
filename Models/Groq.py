@@ -20,7 +20,6 @@ class Groq(IModel):
         """
         url = "https://api.groq.com/openai/v1/chat/completions"
         api_key = os.getenv('GROQ_API_KEY')
-        prompt = self.first_prompt + prompt if self.first_prompt is not None else prompt
 
         if not api_key:
             raise ValueError("Clé API manquante. Définissez GROQ_API_KEY dans le fichier .env")
