@@ -8,7 +8,7 @@ class IModel:
 
     def __init__(self, initial: str | None = None):
         if initial is not None:
-            first_prompt = initial
+            self.first_prompt = initial
 
     @abstractmethod
     def prompt(self, prompt: str) -> IModelResponse:
